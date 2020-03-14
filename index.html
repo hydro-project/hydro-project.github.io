@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>The Hydro Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ site.description }}">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue" rel="stylesheet">
+
+    <link href="assets/css/custom.css" rel="stylesheet">
+
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="assets/images/favicon.png"> 
+  </head>
+
+  <body>    
+    <div class="header"> 
+      <div class="header-logo">
+        <img src="assets/images/logo.png">
+      </div>
+
+      <div class="header-nav">
+        <div class="header-nav-link">
+          <a href="#papers">Papers</a>
+      </div>
+      <div class="header-nav-link">
+          <a href="#talks">Talks</a>
+      </div>
+      <div class="header-nav-link">
+        <a href="#blog-posts">Blog Posts</a>
+      </div>
+      <div class="header-nav-link">
+        <a href="https://github.com/hydro-project">Github</a>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="section" id="overview"> 
+        <h2> Project Overview </h2>
+
+        <p>
+          The Hydro project is a research project from the <a href="https://rise.cs.berkeley.edu">RISE Lab</a> at <a href="https://berkeley.edu">
+          UC Berkeley</a>. The Hydro project is a framework for data-centric cloud programming research. Our work thus far has focused on developing low-latency
+          systems that support leverage coordination-free consistency techniques to resolve potentially conflicting updates to shared state.
+          The two systems we have developed thus far are Anna and Cloudburst.
+        </p>
+
+        <h3 id="anna">Anna</h3>
+        
+        <p>
+          Anna is a low-latency autoscaling KVS that aims to provide the latency guarantees of a memory-speed KVS like Redis while also autoscaling to match
+          workload, similar to systems like AWS S3 or Google Cloud Storage. To avoid expensive locking or lock-free atomic techniques, Anna allows each worker thread 
+          to accept updates to the same keys in parallel. To resolve conflicting updates, Anna stores all data in lattice data structures which have associate, commutative, and 
+          idempotent <i>merge</i> functions. 
+        </p>
+
+        <h3 id="cloudburst">Cloudburst</h3>
+
+        <p>
+          Cloudburst is a stateful Function-as-a-Service (FaaS) platform built on top of Anna. Cloudburst focuses on providing best-in-class performance for FaaS workloads that
+          shhare state (e.g., function composition, direct communication) by introducing caches that live on the same physical machines as function exectuors. Cloudburst also 
+          guarantees causal consistency and repeatable reads for compostions of functions by leveraging Anna's consistency primitives and adding new consistencyprotocols at the
+          caching layer.
+        </p>
+      </div>
+
+      <div class="section" id="papers">
+        <h2>Research Papers</h2>
+        <ul>
+          
+          <li> 
+            <i>Transactional Causal Consistency for Serverless Computing</i>.
+            C. Wu, V. Sreekanti, J. M.  Hellerstein.
+            <i>SIGMOD</i> 2020. <i>To appear.</i>
+          </li>
+        
+          <li> 
+            <i>A Fault-Tolerance Shim for Serverless Computing</i>.
+            V. Sreekanti, C. Wu, S. Chhatrapati, J. E. Gonzalez, J. M.  Hellerstein, J. M. Faleiro.
+            <i>EuroSys</i> 2020. <i>To appear.</i>
+          </li>
+
+          <li>
+            <i><a href="https://arxiv.org/abs/2001.04592">Cloudburst: Stateful Functions-as-a-Service</a></i>. 
+            V. Sreekanti, C. Wu, X. C. Lin, J.  Schleier-Smith, J. M. Faleiro, J. E. Gonzalez, J. M.  Hellerstein, A. Tumanov. 
+            <i>arxiv:2001.04592</i>. 2020.
+          </li>
+
+          <li>
+            <i><a href="http://www.vldb.org/pvldb/vol12/p624-wu.pdf">Autoscaling Tiered Cloud Storage in Anna</a></i>.
+            C. Wu,V. Sreekanti, J.M. Hellerstein. <i>VLDB</i> 2019.
+            (Preprint: <a href="https://arxiv.org/abs/1809.00089">arXiv:1809.00089</a>.)
+          </li>
+
+          <li>
+            <i><a href="http://cidrdb.org/cidr2019/papers/p119-hellerstein-cidr19.pdf">Serverless Computing: One Step Forward, Two Steps Back</a></i>.
+            J.M. Hellerstein, J. Faleiro, J.E. Gonzalez, J. Schleier-Smith, V. Sreekanti, A. Tumanov, C. Wu.
+            <i>CIDR</i> 2019. (Preprint: <a href="https://arxiv.org/abs/1812.03651">arXiv:1812.03651</a>.)
+          </li>
+          
+          <li>
+            <i><a href=https://ieeexplore.ieee.org/document/8509265">Anna: A KVS for Any Scale</a></i>.
+            C. Wu, J. M. Faleiro, Y. Lin, J. M. Hellerstein. <i>ICDE</i> 2018, <i>TKDE</i> 2019..
+          </li>
+        </ul>
+      </div>
+
+      <div class="section" id="talks">
+        <h2> Talks </h2>
+        <ul>
+          <li> 
+            <a href="https://www.infoq.com/presentations/state-serverless-computing/"><i>The State of Serverless Computing</i></a>.
+                Chenggang Wu. <i>QCon New York</i>. June 24, 2019. New York, USA.
+          </li>
+          <li> 
+            <a href="https://www.youtube.com/watch?v=htLQiSPMUmk"><i>The State of Serverless Computing, or Fixing Dysfunction-as-a-Service</i></a>.
+                Vikram Sreekanti and Chenggang Wu. <i>Craft Conference</i>. May 9, 2019. Budapest, Hungary.
+          </li>
+        </ul>
+      </div>
+
+      <div class="section" id="blog-posts">
+        <h2> Blog Posts </h2>
+        <ul>
+          <li>
+            <i><a href="https://medium.com/riselab/cloudburst-stateful-functions-as-a-service-abb731098cea">Cloudburst: Stateful Function-as-a-Service</a></i>.
+            Vikram Sreekanti, Joe Hellerstein. January 28, 2020.
+          </li>
+
+          <li>
+            <i><a href="https://databeta.wordpress.com/2018/12/13/serverless-computing-one-step-fw-two-steps-back/">Serverless Computing: One Steps Forward, Two Steps Back</a></i>.
+            Joe Hellerstein. December 13, 2018.
+          </li>
+
+          <li>
+            <i><a href="https://rise.cs.berkeley.edu/blog/going-fast-and-cheap-how-we-made-anna-autoscale/">Going Fast and Cheap: How We Made Anna Autoscale</a></i>.
+            Chenggang Wu, Vikram Sreekanti, Joe Hellerstein. September 7, 2018.
+          </li>
+          
+          <li>
+            <i><a href="https://databeta.wordpress.com/2018/03/09/anna-kvs/">Anna: A Crazy Fast, Super-Scalable, Flexibly Consistent KVS</a></i>. Joe Hellerstein. 
+            March 9, 2018.
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer"> 
+        © 2020 Hydro Project Authors. 
+      </div>
+    </div>
+  </body>
+</html>
