@@ -42,9 +42,9 @@
         <h2> Project Overview </h2>
 
         <p>
-          The Hydro project is a research project from the <a href="https://rise.cs.berkeley.edu">RISE Lab</a> at <a href="https://berkeley.edu">
-          UC Berkeley</a>. The Hydro project is a framework for data-centric cloud programming research. Our work thus far has focused on developing low-latency
-          systems that support leverage coordination-free consistency techniques to resolve potentially conflicting updates to shared state.
+          The Hydro project is a framework for data-centric cloud programming research from the <a href="https://rise.cs.berkeley.edu">RISE Lab</a> at <a href="https://berkeley.edu">
+          UC Berkeley</a>. Our work thus far has focused on developing low-latency
+          systems that support coordination-free consistency techniques to resolve potentially conflicting updates to shared state.
           The two systems we have developed thus far are Anna and Cloudburst.
         </p>
 
@@ -53,7 +53,7 @@
         <p>
           Anna is a low-latency autoscaling KVS that aims to provide the latency guarantees of a memory-speed KVS like Redis while also autoscaling to match
           workload, similar to systems like AWS S3 or Google Cloud Storage. To avoid expensive locking or lock-free atomic techniques, Anna allows each worker thread 
-          to accept updates to the same keys in parallel. To resolve conflicting updates, Anna stores all data in lattice data structures which have associate, commutative, and 
+          to accept updates to the same keys in parallel without coordination. To resolve conflicting updates, Anna stores all data in lattice data structures which have associate, commutative, and 
           idempotent <i>merge</i> functions. 
         </p>
 
@@ -61,8 +61,8 @@
 
         <p>
           Cloudburst is a stateful Function-as-a-Service (FaaS) platform built on top of Anna. Cloudburst focuses on providing best-in-class performance for FaaS workloads that
-          shhare state (e.g., function composition, direct communication) by introducing caches that live on the same physical machines as function exectuors. Cloudburst also 
-          guarantees causal consistency and repeatable reads for compostions of functions by leveraging Anna's consistency primitives and adding new consistencyprotocols at the
+          share state (e.g., function composition, direct communication) by introducing caches that live on the same physical machines as function exectuors. Cloudburst also 
+          guarantees causal consistency and repeatable reads for compostions of functions by leveraging Anna's consistency primitives and adding new consistency protocols at the
           caching layer.
         </p>
       </div>
@@ -102,8 +102,8 @@
           </li>
           
           <li>
-            <i><a href=https://ieeexplore.ieee.org/document/8509265">Anna: A KVS for Any Scale</a></i>.
-            C. Wu, J. M. Faleiro, Y. Lin, J. M. Hellerstein. <i>ICDE</i> 2018, <i>TKDE</i> 2019..
+            <i><a href=http://cgwu.io/files/papers/Anna_TKDE.pdf">Anna: A KVS for Any Scale</a></i>.
+            C. Wu, J. M. Faleiro, Y. Lin, J. M. Hellerstein. <i>ICDE</i> 2018, <i>TKDE</i> 2019.
           </li>
         </ul>
       </div>
